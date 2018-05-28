@@ -35,6 +35,7 @@ tools.add = function (dataArr, callback) {
 
 //删除数据
 tools.remove = function (id, callback) {
+    dbConnection();
     let sql = "delete from user where id =" + id;
     console.log(sql);
     connection.query(sql, function (err, result) {
@@ -45,6 +46,7 @@ tools.remove = function (id, callback) {
 
 //修改数据
 tools.update = function (dataArr, callback) {
+    dbConnection();
     let sql = 'update user set name = ?,sex = ?,age = ? where id = ?';
     let params = [dataArr.name, dataArr.sex, dataArr.age, dataArr.id];
     connection.query(sql, params, function (err, result) {
